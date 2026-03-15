@@ -1,0 +1,136 @@
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1920" alt="Bar" class="hero-bg-img">
+    <div class="hero-overlay"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-status">
+      <span class="status-dot"></span>
+      <span class="status-text">Abierto ahora • Cierre: 01:00</span>
+    </div>
+
+    <h1 class="hero-title">
+      Donde la tapa<br>
+      <span class="accent">cuenta historia</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      Tapas artesanales con alma de barrio en el corazón de Arganzuela.
+    </p>
+
+    <div class="hero-buttons">
+      <a routerLink="/carta" class="btn-primary">Ver Nuestra Carta 📋</a>
+      <a href="tel:+34910419315" class="btn-outline">📞 Llamar Ahora</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-number">8+</div>
+        <div class="stat-label">Años</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">50+</div>
+        <div class="stat-label">Tapas</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">4.4</div>
+        <div class="stat-label">★ Google</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESTACADOS -->
+<section style="padding: 80px 0; background-color: #F7F5F2;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 16px;">
+    <div style="text-align: center; margin-bottom: 64px;">
+      <span style="font-size: 20px; font-family: 'Caveat', cursive; color: #C45D3E;">Nuestras especialidades</span>
+      <h2 style="font-size: 48px; font-family: 'Playfair Display', serif; font-weight: bold; color: #1A1512; margin-bottom: 16px;">Platos que<span style="color: #C45D3E;"> enamoran</span></h2>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px;">
+      @for (plato of platosDestacados; track plato.id) {
+        <div class="card-menu">
+          <div style="position: relative; height: 256px; overflow: hidden;">
+            <img [src]="plato.imagen" [alt]="plato.nombre" style="width: 100%; height: 100%; object-fit: cover;">
+            <div style="position: absolute; top: 16px; right: 16px; background-color: #C45D3E; color: white; padding: 4px 12px; border-radius: 9999px; font-size: 14px; font-weight: 500;">⭐ Destacado</div>
+          </div>
+          <div style="padding: 24px;">
+            <h3 style="font-size: 20px; font-family: 'Playfair Display', serif; font-weight: bold; color: #1A1512; margin-bottom: 8px;">{{ plato.nombre }}</h3>
+            <p style="color: #5A4538; font-size: 14px; margin-bottom: 16px;">{{ plato.descripcion }}</p>
+            <span style="font-size: 24px; font-weight: bold; color: #C45D3E;">{{ plato.precio | currency:'EUR' }}</span>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div style="text-align: center; margin-top: 48px;">
+      <a routerLink="/carta" class="btn-secondary" style="text-decoration: none;">Ver Carta Completa →</a>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section style="padding: 80px 0; background-color: #1A1512; position: relative; overflow: hidden;">
+  <div style="position: absolute; top: 0; left: 0; width: 256px; height: 256px; background-color: rgba(196,93,62,0.1); border-radius: 50%; transform: translate(-50%, -50%);"></div>
+  <div style="position: absolute; bottom: 0; right: 0; width: 384px; height: 384px; background-color: rgba(125,140,92,0.1); border-radius: 50%; transform: translate(50%, 50%);"></div>
+
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 16px; position: relative; z-index: 10;">
+    <div style="text-align: center; margin-bottom: 64px;">
+      <span style="font-size: 20px; font-family: 'Caveat', cursive; color: #C45D3E;">Lo que dicen nuestros clientes</span>
+      <h2 style="font-size: 48px; font-family: 'Playfair Display', serif; font-weight: bold; color: white; margin-bottom: 16px;">Reseñas que<span style="color: #C45D3E;"> hablan</span></h2>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px;">
+      @for (resena of resenas; track resena.nombre) {
+        <div style="background-color: rgba(74,57,48,0.5); border-radius: 16px; padding: 32px; backdrop-filter: blur(10px); border: 1px solid rgba(196,93,62,0.2);">
+          <div style="display: flex; gap: 4px; margin-bottom: 16px;">
+            @for (star of [1,2,3,4,5]; track star) {
+              <span style="color: #C45D3E;">★</span>
+            }
+          </div>
+          <p style="color: rgba(255,255,255,0.9); margin-bottom: 24px; font-style: italic;">"{{ resena.texto }}"</p>
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="width: 40px; height: 40px; background-color: #C45D3E; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">{{ resena.nombre.charAt(0) }}</div>
+            <div>
+              <div style="color: white; font-weight: 500;">{{ resena.nombre }}</div>
+              <div style="color: rgba(255,255,255,0.6); font-size: 14px;">{{ resena.fecha }}</div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div style="text-align: center; margin-top: 48px;">
+      <a href="https://www.google.com/maps/place/BarR%C3%ADo/@40.4137,-3.7193,17z/data=!4m6!3m5!1s0xd4229f31cebe5b7:0x5c20b296cc4c283a!8m2!3d40.4136991!4d-3.7192554!16s%2Fg%2F11f9vw32t9?entry=ttu&g_ep=EgoyMDI2MDMxMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" style="color: rgba(255,255,255,0.7); text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+        <span>📍</span> Ver todas las reseñas en Google Maps
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- HORARIO -->
+<section style="padding: 64px 0; background-color: #7D8C5C;">
+  <div style="max-width: 800px; margin: 0 auto; padding: 0 16px; text-align: center;">
+    <h3 style="font-size: 24px; font-family: 'Playfair Display', serif; font-weight: bold; color: white; margin-bottom: 24px;">🕐 Horario</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+      <div style="background-color: rgba(255,255,255,0.1); border-radius: 12px; padding: 16px;">
+        <div style="font-weight: 500; color: white;">Lunes - Jueves</div>
+        <div style="font-size: 20px; color: rgba(255,255,255,0.9);">12:00 - 01:00</div>
+      </div>
+      <div style="background-color: rgba(255,255,255,0.1); border-radius: 12px; padding: 16px;">
+        <div style="font-weight: 500; color: white;">Viernes - Domingo</div>
+        <div style="font-size: 20px; color: rgba(255,255,255,0.9);">12:00 - 02:30</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+</style>

@@ -1,0 +1,99 @@
+<!-- Navbar -->
+<nav style="position: fixed; width: 100%; z-index: 50; background-color: rgba(26,21,18,0.95); backdrop-filter: blur(10px); box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 16px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; height: 80px;">
+      
+      <!-- Logo -->
+      <div style="flex-shrink: 0;">
+        <a routerLink="/" style="display: flex; align-items: center; gap: 8px; text-decoration: none;">
+          <span style="font-size: 30px;">🍷</span>
+          <span style="font-family: 'Playfair Display', serif; font-size: 24px; font-weight: bold; color: white;">
+            Bar<span style="color: #C45D3E;">Río</span>
+          </span>
+        </a>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="desktop-menu" style="display: flex; align-items: center; gap: 32px;">
+        <a routerLink="/" style="color: white; text-decoration: none; font-weight: 500; transition: color 0.3s;">Inicio</a>
+        <a routerLink="/carta" style="color: white; text-decoration: none; font-weight: 500; transition: color 0.3s;">La Carta</a>
+        <a routerLink="/resenas" style="color: white; text-decoration: none; font-weight: 500; transition: color 0.3s;">Reseñas</a>
+        <a routerLink="/contacto" style="color: white; text-decoration: none; font-weight: 500; transition: color 0.3s;">Contacto</a>
+        <a href="#reservar" style="background-color: #C45D3E; color: white; padding: 8px 16px; border-radius: 6px; font-size: 14px; font-weight: 500; text-decoration: none;">Reservar Mesa</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="mobile-menu-btn" style="display: none;">
+        <button (click)="toggleMenu()" style="background: none; border: none; color: white; padding: 8px; cursor: pointer;">
+          <svg style="width: 24px; height: 24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" style="display: none; background-color: #2E2420; padding: 16px;" [style.display]="isMenuOpen ? 'block' : 'none'">
+    <a routerLink="/" (click)="toggleMenu()" style="display: block; color: white; padding: 12px 0; border-bottom: 1px solid #4A3930;">Inicio</a>
+    <a routerLink="/carta" (click)="toggleMenu()" style="display: block; color: white; padding: 12px 0; border-bottom: 1px solid #4A3930;">La Carta</a>
+    <a routerLink="/resenas" (click)="toggleMenu()" style="display: block; color: white; padding: 12px 0; border-bottom: 1px solid #4A3930;">Reseñas</a>
+    <a routerLink="/contacto" (click)="toggleMenu()" style="display: block; color: white; padding: 12px 0;">Contacto</a>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<main style="min-height: 100vh; padding-top: 80px;">
+  <router-outlet></router-outlet>
+</main>
+
+<!-- Footer -->
+<footer style="background-color: #1A1512; color: white; padding-top: 64px; padding-bottom: 32px;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 16px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; margin-bottom: 48px;">
+      
+      <!-- Logo -->
+      <div style="grid-column: span 2;">
+        <a routerLink="/" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px; text-decoration: none;">
+          <span style="font-size: 30px;">🍷</span>
+          <span style="font-family: 'Playfair Display', serif; font-size: 24px; font-weight: bold; color: white;">
+            Bar<span style="color: #C45D3E;">Río</span>
+          </span>
+        </a>
+        <p style="color: rgba(255,255,255,0.7); max-width: 400px; margin-bottom: 16px;">
+          Tapas con alma de barrio en el corazón de Arganzuela.
+        </p>
+        <div style="display: flex; gap: 16px;">
+          <a href="#" style="width: 40px; height: 40px; background-color: #2E2420; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none;">📷</a>
+          <a href="#" style="width: 40px; height: 40px; background-color: #2E2420; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none;">📘</a>
+          <a href="https://wa.me/34910419315" style="width: 40px; height: 40px; background-color: #2E2420; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none;">💬</a>
+        </div>
+      </div>
+
+      <!-- Enlaces -->
+      <div>
+        <h4 style="font-family: 'Playfair Display', serif; font-size: 18px; font-weight: bold; margin-bottom: 16px;">Enlaces</h4>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;">
+          <li><a routerLink="/" style="color: rgba(255,255,255,0.7); text-decoration: none;">Inicio</a></li>
+          <li><a routerLink="/carta" style="color: rgba(255,255,255,0.7); text-decoration: none;">La Carta</a></li>
+          <li><a routerLink="/resenas" style="color: rgba(255,255,255,0.7); text-decoration: none;">Reseñas</a></li>
+          <li><a routerLink="/contacto" style="color: rgba(255,255,255,0.7); text-decoration: none;">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Contacto -->
+      <div>
+        <h4 style="font-family: 'Playfair Display', serif; font-size: 18px; font-weight: bold; margin-bottom: 16px;">Contacto</h4>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; color: rgba(255,255,255,0.7);">
+          <li>{{ direccion }}</li>
+          <li><a [href]="'tel:' + telefono" style="color: #C45D3E; text-decoration: none;">{{ telefono }}</a></li>
+          <li><a [href]="'mailto:' + email" style="color: #C45D3E; text-decoration: none;">{{ email }}</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="border-top: 1px solid #2E2420; padding-top: 32px; text-align: center; color: rgba(255,255,255,0.6); font-size: 14px;">
+      <p>© 2024 BarRío. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
